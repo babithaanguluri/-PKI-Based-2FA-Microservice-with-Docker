@@ -49,8 +49,8 @@ COPY instructor_public.pem /app/instructor_public.pem
 # Set correct permissions for cron file
 RUN chmod 0644 /etc/cron.d/2fa-cron
 
-# Register the cron job
-RUN crontab /etc/cron.d/2fa-cron
+# Register the cron job (strip the 'root' username for the user crontab)
+RUN sed 's/root //' /etc/cron.d/2fa-cron | crontab -
 
 # Create persistent storage directories
 RUN mkdir -p /data && chmod 755 /data

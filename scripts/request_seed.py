@@ -2,7 +2,7 @@ import requests
 import json
 
 STUDENT_ID = "23P31A05A1"
-REPO_URL = "https://github.com/babithaanguluri/pki-2fa-microservice"
+REPO_URL = "https://github.com/babithaanguluri/-PKI-Based-2FA-Microservice-with-Docker"
 API_URL = "https://eajeyq4r3zljoq4rpovy2nthda0vtjqf.lambda-url.ap-south-1.on.aws"
 
 with open("student_public.pem", "r") as f:
