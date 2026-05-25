@@ -1,10 +1,10 @@
-# 🔐 PKI-Based 2FA Microservice
+# PKI-Based 2FA Microservice
 
 A secure, containerized **Two-Factor Authentication (2FA) microservice** built with FastAPI and Docker. It leverages **Public Key Infrastructure (PKI)** for secure seed delivery and generates **TOTP (Time-based One-Time Password)** codes following the RFC 6238 standard.
 
 ---
 
-## 📋 Table of Contents
+## Table of Contents
 
 - [Overview](#-overview)
 - [Architecture](#-architecture)
@@ -19,7 +19,7 @@ A secure, containerized **Two-Factor Authentication (2FA) microservice** built w
 
 ---
 
-## 🌐 Overview
+## Overview
 
 This microservice provides a complete PKI-secured 2FA workflow:
 
@@ -31,7 +31,7 @@ This microservice provides a complete PKI-secured 2FA workflow:
 
 ---
 
-## 🏗️ Architecture
+## Architecture
 
 ```
 ┌─────────────────────────────────────────────────────┐
@@ -60,7 +60,7 @@ This microservice provides a complete PKI-secured 2FA workflow:
 
 ---
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 pki-2fa-microservice/
@@ -86,15 +86,15 @@ pki-2fa-microservice/
 ├── docker-compose.yml        # Docker Compose with persistent volumes
 ├── requirements.txt          # Python dependencies
 │
-├── student_private.pem       # 🔒 RSA private key (DO NOT SHARE)
-├── student_public.pem        # 🔓 RSA public key (shared with instructor)
-├── instructor_public.pem     # 🔓 Instructor's RSA public key (for signature encryption)
+├── student_private.pem       #  RSA private key (DO NOT SHARE)
+├── student_public.pem        #  RSA public key (shared with instructor)
+├── instructor_public.pem     #  Instructor's RSA public key (for signature encryption)
 └── encrypted_seed.txt        # Encrypted seed received from instructor
 ```
 
 ---
 
-## ✅ Prerequisites
+## Prerequisites
 
 | Tool | Version |
 |------|---------|
@@ -104,7 +104,7 @@ pki-2fa-microservice/
 
 ---
 
-## 🚀 Getting Started
+## Getting Started
 
 ### 1. Clone the Repository
 
@@ -121,7 +121,7 @@ student_public.pem        ← your RSA public key
 instructor_public.pem     ← provided by instructor
 ```
 
-> ⚠️ **Never commit `student_private.pem` to a public repository.**
+ **Never commit `student_private.pem` to a public repository.**
 
 ### 3. Request the Encrypted Seed
 
@@ -178,7 +178,7 @@ Expected response:
 
 ---
 
-## 📡 API Endpoints
+## API Endpoints
 
 | Method | Endpoint | Description |
 |--------|----------|-------------|
@@ -225,7 +225,7 @@ Expected response:
 
 ---
 
-## 🛠️ Scripts
+## Scripts
 
 ### `scripts/request_seed.py`
 Sends a POST request to the instructor's Lambda API with the student ID, GitHub repo URL, and RSA public key. Saves the returned `encrypted_seed` to `encrypted_seed.txt`.
@@ -260,7 +260,7 @@ python scripts/generate_signature.py
 
 ---
 
-## ⏱️ Cron Job
+## Cron Job
 
 The file `cron/2fa-cron` schedules the TOTP generation script to run **every minute** inside the container:
 
@@ -276,7 +276,7 @@ docker exec -it pki_2fa_app cat /cron/last_code.txt
 
 ---
 
-## 🔐 Security Design
+## Security Design
 
 | Component | Details |
 |-----------|---------|
@@ -298,7 +298,7 @@ docker exec -it pki_2fa_app cat /cron/last_code.txt
 
 ---
 
-## 🧰 Tech Stack
+## Tech Stack
 
 | Layer | Technology |
 |-------|-----------|
@@ -312,7 +312,7 @@ docker exec -it pki_2fa_app cat /cron/last_code.txt
 
 ---
 
-## 📄 License
+## License
 
 This project was developed as part of an academic assignment in secure systems and PKI infrastructure.
 
